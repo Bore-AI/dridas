@@ -2,3 +2,24 @@
   text-align: center;
 }
 
+.song {
+  color: #ccc;
+}
+
+.song-selected {
+  color: rgb(211, 85, 85);
+  font-weight: 1000;
+}
+
+.header {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.sticky {
+  background-color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 100; /* this is optional and should be different for every project */
+  padding: 20px;
+}

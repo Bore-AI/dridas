@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import "./App.css";
 import { useAudio } from "react-use";
 import music from "./music.mp3";
@@ -405,22 +405,24 @@ function App() {
   return (
     <div className="App">
       {audio}
-      <h1>Kongen På Havet</h1>
-      <progress id="kongen" value={state.time - 50} max={3650} />
-      <h3>Øl nr. {currentBeer.number}</h3>
-      {currentBeer.number > 0 && (
-        <progress
-          id="øl"
-          value={state.time - currentBeer.start}
-          max={currentBeer.end - currentBeer.start}
-        />
-      )}
-      <br />
-      <br />
-      {!state.paused && <button onClick={controls.pause}>Legg til kai</button>}
-      {state.paused && <button onClick={controls.play}>Start seilas!</button>}
-      <br />
-      <br />
+      <div className="sticky">
+        <div className="header">Kongen På Havet</div>
+        <progress id="kongen" value={state.time - 50} max={3650} />
+        <h3>Øl nr. {currentBeer.number}</h3>
+        {currentBeer.number > 0 && (
+          <progress
+            id="øl"
+            value={state.time - currentBeer.start}
+            max={currentBeer.end - currentBeer.start}
+          />
+        )}
+        <br />
+        <br />
+        {!state.paused && (
+          <button onClick={controls.pause}>Legg til kai</button>
+        )}
+        {state.paused && <button onClick={controls.play}>Start seilas!</button>}
+      </div>
       <SongList currentSong={currentSong} onSongClick={onSongClick} />
     </div>
   );
@@ -463,21 +465,14 @@ const SongList = (props) => {
 const Song = (props) => {
   const { song, current, onSongClick } = props;
 
-  if (current) {
-    return (
-      <div onClick={() => onSongClick(song)}>
-        <b>
-          {song.artist} - {song.song}
-        </b>
-      </div>
-    );
-  } else {
-    return (
-      <div onClick={() => onSongClick(song)}>
-        {song.artist} - {song.song}
-      </div>
-    );
-  }
+  return (
+    <div
+      onClick={() => onSongClick(song)}
+      className={`song ${current ? "song-selected" : ""}`}
+    >
+      {song.artist} - {song.song}
+    </div>
+  );
 };
 
 export default App;
