@@ -259,7 +259,7 @@ const songs = [
   },
   {
     start: 2586,
-    end: 2563,
+    end: 2653,
     artist: "DJ Ötzi",
     song: "Sweet Caroline",
   },
