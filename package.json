@@ -6,8 +6,8 @@
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "react-use": "^15.3.0"
+    "react-scripts": "3.4.3",
+    "react-use": "^15.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
