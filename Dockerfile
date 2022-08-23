@@ -1,13 +1,15 @@
 # Stage 1: Build
 FROM node:18-alpine as build
 
+RUN npm install -g pnpm
+
 WORKDIR /app
 
 COPY ./package.json /app/package.json
-COPY ./yarn.lock /app/yarn.lock
+COPY ./pnpm-lock.yaml /app/pnpm-lock.yaml
 
 RUN apk add build-base autoconf automake zlib-dev
-RUN yarn install
+RUN pnpm install
 
 COPY . /app
 RUN INLINE_RUNTIME_CHUNK=false yarn build
